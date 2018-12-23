@@ -46,7 +46,7 @@ streamSignature.prototype.write = function (chunk) {
           for (let ii = 0; ii < sig.length; ii += 2) {
             const offset = sig[ii]
             const byteSeq = sig[ii+1]
-            if (!byteSeq.equals(buffer.slice(offset, offset + byteSeq.length))) {
+            if (!byteSeq.equals(this.buffer.chunks.slice(offset, offset + byteSeq.length))) {
               matches = false
               continue signatures
             }
