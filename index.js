@@ -1,6 +1,8 @@
 const stream = require('stream')
 const util = require('util')
 
+module.exports = streamSignature
+
 function streamSignature (options) {
   if (!(this instanceof streamSignature)) {
     return new streamSignature(options)
