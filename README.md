@@ -36,7 +36,7 @@ fs.createReadStream('path/to/file.png')
 // }
 ```
 
-#### Changes form `buffer-signature`
+#### Changes from `buffer-signature`
 
 * Converted to a PassThrough stream
 * No Dependancies
