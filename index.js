@@ -14,12 +14,7 @@ function streamSignature (options) {
     complete: false,
     chunks: []
   }
-  this.signature = {
-    unknown: true,
-    mimetype: 'application/octet-stream',
-    description: 'unknown',
-    extensions: []
-  }
+  this.signature = {}
   this.destroyed = false
 }
 
@@ -39,7 +34,7 @@ streamSignature.prototype.write = function (chunk) {
     if (this.buffer.size >= 22) {
       this.buffer.complete = true
       this.buffer.data = Buffer.concat(this.buffer.chunks, this.buffer.size)
-      let exitFor = false
+      let success = false
       for (let filetype of this.filetypes) {
         signatures: for (let sig of filetype.signatures) {
           let matches = true
@@ -57,13 +52,18 @@ streamSignature.prototype.write = function (chunk) {
               description: filetype.description || '',
               extensions: filetype.extensions || []
             }
-            exitFor = true
+            success = true
             break
           }
         }
-        if (exitFor) break
+        if (success) break
       }
-      this.emit('signature', this.signature)
+      if (success) {
+        this.emit('signature', this.signature)
+      } else {
+        this.emit('fail', this.signature)
+      }
+
     }
   }
   return stream.PassThrough.prototype.write.call(this, chunk)

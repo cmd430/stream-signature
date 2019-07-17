@@ -27,6 +27,14 @@ module.exports = [
     ]
   },
   {
+    extensions: [ 'webp' ],
+    description: 'WebP is an image format that uses the VP8 key frame encoding to compress image data',
+    mimetype: 'image/webp',
+    signatures: [
+      [0, Buffer.from([ 0x52, 0x49, 0x46, 0x46 ]), 8, Buffer.from([ 0x57, 0x45, 0x42, 0x50 ])]
+    ]
+  },
+  {
     extensions: [ 'mp3' ],
     description: 'MPEG-1 Layer 3 file without an ID3 tag or with an ID3v1 tag',
     mimetype: 'audio/mpeg',
