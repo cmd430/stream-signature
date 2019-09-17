@@ -1,6 +1,6 @@
 {
   "name": "stream-signature",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Detect file type from 'Magic' Bytes",
   "main": "index.js",
   "scripts": {
