@@ -9,6 +9,14 @@ module.exports = [
     ]
   },
   {
+    extensions: [ 'vtt' ],
+    description: 'Web Video Text Tracks Format is a format for displaying timed text tracks',
+    mimetype: 'text/vtt',
+    signatures: [
+      [0, Buffer.from('WEBVTT FILE')]
+    ]
+  },
+  {
     extensions: [ 'jpg', 'jpeg' ],
     description: 'JPEG raw or in the JFIF or Exif file format',
     mimetype: 'image/jpeg',
